@@ -1,9 +1,14 @@
 import * as express from 'express';
-const router = express.Router();
+const forecastRouter = express.Router();
 
 import { createHandler } from '../../handlers/common';
 import { forecastHandler } from '../../handlers';
+import validateSchema from './validationSchema';
 
-router.post('/forecast', createHandler(forecastHandler));
+forecastRouter.post(
+  '/forecast',
+  validateSchema,
+  createHandler(forecastHandler)
+);
 
-export default router;
+export default forecastRouter;

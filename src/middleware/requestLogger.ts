@@ -5,9 +5,11 @@ const requestLogger = (req: express.Request, res: express.Response, next: expres
   const start = new Date().getTime();
   res.on('finish', () => {
     const elapsed = new Date().getTime() - start;
-    console.info(`${req.method} ${req.originalUrl} ${res.statusCode} - from IP : ${req.ip} - ${elapsed}ms`);
+    console.info(`${req.method} ${req.originalUrl} ${res.statusCode} - from IP : ${req.ip} - ${elapsed}ms 
+      \n\r=====================================================================`
+    );
   })
   next();
 }
 
-export { requestLogger };
+export default requestLogger;
